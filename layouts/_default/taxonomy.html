@@ -1,0 +1,19 @@
+{{ define "main" }}
+  <section class="section-head section-head-page">
+    <div>
+      <p class="eyebrow">{{ .Data.Plural | humanize }}</p>
+      <h1>{{ .Title }}</h1>
+    </div>
+  </section>
+
+  <section class="stack-list">
+    {{ range .Pages.ByDate.Reverse }}
+      {{ partial "post-card.html" . }}
+    {{ else }}
+      <article class="empty-state">
+        <h3>还没有内容</h3>
+        <p>这个分类或标签下还没有文章。</p>
+      </article>
+    {{ end }}
+  </section>
+{{ end }}

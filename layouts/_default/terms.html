@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <section class="section-head section-head-page">
+    <div>
+      <p class="eyebrow">Taxonomy</p>
+      <h1>{{ .Title }}</h1>
+    </div>
+  </section>
+
+  <section class="term-grid">
+    {{ range .Data.Terms.Alphabetical }}
+      <a class="term-card" href="{{ .Page.RelPermalink }}">
+        <strong>{{ .Page.Title }}</strong>
+        <span>{{ .Count }} 篇</span>
+      </a>
+    {{ else }}
+      <article class="empty-state">
+        <h3>还没有标签</h3>
+        <p>给文章加上 <code>tags</code> 后，这里会自动出现。</p>
+      </article>
+    {{ end }}
+  </section>
+{{ end }}

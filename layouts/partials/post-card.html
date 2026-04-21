@@ -1,0 +1,23 @@
+<article class="post-card">
+  <div class="post-card-top">
+    <p class="meta-row">
+      <span>{{ .Date.Format "2006-01-02" }}</span>
+      <span>{{ .ReadingTime }} min read</span>
+    </p>
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  </div>
+
+  {{ with .Description }}
+    <p>{{ . }}</p>
+  {{ else }}
+    <p>{{ .Summary }}</p>
+  {{ end }}
+
+  {{ with .Params.tags }}
+    <ul class="tag-row">
+      {{ range first 3 . }}
+        <li><a href="{{ (printf "/tags/%s/" (. | urlize)) | relURL }}">#{{ . }}</a></li>
+      {{ end }}
+    </ul>
+  {{ end }}
+</article>

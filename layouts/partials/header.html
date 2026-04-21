@@ -1,0 +1,17 @@
+<header class="site-header">
+  <div class="page-shell header-inner">
+    <a class="brand" href="{{ "/" | relURL }}">
+      <span class="brand-mark">M</span>
+      <span>
+        <strong>{{ site.Title }}</strong>
+        <small>{{ site.Params.subtitle }}</small>
+      </span>
+    </a>
+
+    <nav class="nav">
+      {{ range site.Menus.main }}
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,66 @@
+{{ define "main" }}
+  <article class="article">
+    {{ $showDate := not .Date.IsZero }}
+    {{ $showReadingTime := eq .Section "posts" }}
+    {{ $prev := .PrevInSection }}
+    {{ $next := .NextInSection }}
+    <header class="article-header">
+      {{ with .Section }}
+        <p class="eyebrow">{{ . | humanize }}</p>
+      {{ end }}
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}
+        <p class="article-summary">{{ . }}</p>
+      {{ end }}
+      {{ if or $showDate $showReadingTime (gt (len (.Params.categories | default (slice))) 0) }}
+        <div class="meta-row">
+          {{ if $showDate }}
+            <span>{{ .Date.Format "2006-01-02" }}</span>
+          {{ end }}
+          {{ if $showReadingTime }}
+            <span>{{ .ReadingTime }} min read</span>
+          {{ end }}
+          {{ with .Params.categories }}
+            <span>{{ index . 0 }}</span>
+          {{ end }}
+        </div>
+      {{ end }}
+    </header>
+
+    {{ with .Params.tags }}
+      <ul class="tag-row">
+        {{ range . }}
+          <li><a href="{{ (printf "/tags/%s/" (. | urlize)) | relURL }}">#{{ . }}</a></li>
+        {{ end }}
+      </ul>
+    {{ end }}
+
+    {{ if and (ne .TableOfContents "<nav id=\"TableOfContents\"></nav>") (.Params.toc | default true) }}
+      <aside class="toc">
+        <h2>目录</h2>
+        {{ .TableOfContents }}
+      </aside>
+    {{ end }}
+
+    <section class="prose article-body">
+      {{ .Content }}
+    </section>
+
+    {{ if or $prev $next }}
+      <nav class="article-nav">
+        {{ with $prev }}
+          <a class="nav-card" href="{{ .RelPermalink }}">
+            <span>较新一篇</span>
+            <strong>{{ .Title }}</strong>
+          </a>
+        {{ end }}
+        {{ with $next }}
+          <a class="nav-card" href="{{ .RelPermalink }}">
+            <span>较早一篇</span>
+            <strong>{{ .Title }}</strong>
+          </a>
+        {{ end }}
+      </nav>
+    {{ end }}
+  </article>
+{{ end }}

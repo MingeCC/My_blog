@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <section class="section-head section-head-page">
+    <div>
+      <p class="eyebrow">{{ .Section | default "Archive" | humanize }}</p>
+      <h1>{{ .Title }}</h1>
+    </div>
+  </section>
+
+  {{ with .Content }}
+    <section class="prose list-intro">
+      {{ . }}
+    </section>
+  {{ end }}
+
+  <section class="stack-list">
+    {{ range .Pages.ByDate.Reverse }}
+      {{ partial "post-card.html" . }}
+    {{ else }}
+      <article class="empty-state">
+        <h3>这里还没有内容</h3>
+        <p>先创建几篇文章，列表页会自动展示。</p>
+      </article>
+    {{ end }}
+  </section>
+{{ end }}
