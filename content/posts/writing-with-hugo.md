@@ -3,7 +3,7 @@ title = "Writing With Hugo"
 date = 2026-04-20T20:10:00+08:00
 draft = false
 description = "从 0 到 GitHub Pages 上线：我的 Hugo 博客完整搭建与写作流程。"
-tags = ["workflow", "markdown", "github-pages", "deployment"]
+tags = ["workflow", "markdown", "github-pages", "deployment","hugo"]
 categories = ["Writing"]
 toc = true
 +++

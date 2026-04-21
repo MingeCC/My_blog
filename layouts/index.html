@@ -4,7 +4,10 @@
   <section class="hero-card">
     <div class="hero-main">
       <p class="eyebrow">Personal Notebook</p>
-      <h1>{{ site.Params.heroTitle | default site.Title }}</h1>
+      <h1>
+        {{ site.Params.heroTitle | default site.Title }}
+        <span class="hero-title-suffix">By Vibe Coding</span>
+      </h1>
       <p class="hero-copy">
         {{ with site.Params.description }}{{ . }}{{ else }}{{ site.Params.subtitle }}{{ end }}
       </p>

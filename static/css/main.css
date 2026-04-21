@@ -240,6 +240,23 @@ main.page-shell {
   font-size: clamp(2.1rem, 4.2vw, 3.4rem);
   line-height: 1.02;
   letter-spacing: -0.04em;
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 0.34em;
+}
+
+.hero-title-suffix {
+  margin-left: 0;
+  font-size: 0.32em;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  line-height: 1;
+  white-space: nowrap;
+  align-self: flex-end;
+  padding-bottom: 0.05em;
 }
 
 .hero-copy {
@@ -595,6 +612,66 @@ main.page-shell {
   display: block;
   margin-top: 0.5rem;
   color: var(--muted);
+}
+
+.term-stack {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.term-expand {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--paper-strong), var(--paper));
+  box-shadow: var(--shadow-soft);
+  padding: 1.15rem 1.3rem;
+}
+
+.term-expand-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.65rem;
+}
+
+.term-expand-head h2 {
+  margin: 0;
+  font-size: 1.36rem;
+}
+
+.term-expand-head span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.term-post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.56rem;
+}
+
+.term-post-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.52rem 0;
+  border-top: 1px solid rgba(22, 32, 51, 0.08);
+}
+
+.term-post-item a {
+  font-weight: 700;
+}
+
+.term-post-item time {
+  color: var(--muted);
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .site-footer {

@@ -6,12 +6,23 @@
     </div>
   </section>
 
-  <section class="term-grid">
+  <section class="term-stack">
     {{ range .Data.Terms.Alphabetical }}
-      <a class="term-card" href="{{ .Page.RelPermalink }}">
-        <strong>{{ .Page.Title }}</strong>
-        <span>{{ .Count }} 篇</span>
-      </a>
+      <article class="term-expand">
+        <header class="term-expand-head">
+          <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></h2>
+          <span>{{ .Count }} 篇</span>
+        </header>
+
+        <ul class="term-post-list">
+          {{ range .Page.Pages.ByDate.Reverse }}
+            <li class="term-post-item">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format "2006-01-02" }}</time>
+            </li>
+          {{ end }}
+        </ul>
+      </article>
     {{ else }}
       <article class="empty-state">
         <h3>还没有标签</h3>

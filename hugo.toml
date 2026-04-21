@@ -1,4 +1,4 @@
-baseURL = "https://mingecc.github.io/My_blog/"
+baseURL = "https://blog.mingecc.xyz/"
 languageCode = "zh-cn"
 title = "Mingyi's Blog"
 enableRobotsTXT = true
