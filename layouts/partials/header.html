@@ -1,8 +1,8 @@
 <header class="site-header">
   <div class="page-shell header-inner">
-    <a class="brand" href="{{ "/" | relURL }}">
-      <span class="brand-mark">M</span>
-      <span>
+    <a class="brand" href="{{ site.Home.Permalink }}">
+      <img class="brand-avatar" src="{{ site.Params.avatar | absURL }}" alt="{{ site.Params.author }}">
+      <span class="brand-copy">
         <strong>{{ site.Title }}</strong>
         <small>{{ site.Params.subtitle }}</small>
       </span>

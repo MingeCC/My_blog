@@ -1,4 +1,4 @@
-baseURL = "https://example.org/"
+baseURL = "https://mingecc.github.io/My_blog/"
 languageCode = "zh-cn"
 title = "Mingyi Blog"
 enableRobotsTXT = true
@@ -17,8 +17,9 @@ category = "categories"
 
 [params]
 author = "Mingyi"
-description = "一个用 Hugo 搭建的个人博客，记录技术、写作与生活。"
-subtitle = "Keep it simple, keep it published."
+description = "写代码，写博客，也写一些还没来得及遗忘的想法。"
+subtitle = "Notes, code, and a calmer corner of the internet."
+avatar = "images/avatar-orbit.svg"
 mainSections = ["posts"]
 
 [markup]

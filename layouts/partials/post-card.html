@@ -1,9 +1,14 @@
 <article class="post-card">
   <div class="post-card-top">
-    <p class="meta-row">
-      <span>{{ .Date.Format "2006-01-02" }}</span>
-      <span>{{ .ReadingTime }} min read</span>
-    </p>
+    <div class="post-card-head">
+      {{ with .Params.categories }}
+        <span class="post-kicker">{{ index . 0 }}</span>
+      {{ end }}
+      <p class="meta-row">
+        <span>{{ .Date.Format "2006-01-02" }}</span>
+        <span>{{ .ReadingTime }} min read</span>
+      </p>
+    </div>
     <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
   </div>
 
@@ -13,11 +18,14 @@
     <p>{{ .Summary }}</p>
   {{ end }}
 
-  {{ with .Params.tags }}
-    <ul class="tag-row">
-      {{ range first 3 . }}
-        <li><a href="{{ (printf "/tags/%s/" (. | urlize)) | relURL }}">#{{ . }}</a></li>
-      {{ end }}
-    </ul>
-  {{ end }}
+  <div class="post-card-bottom">
+    {{ with .Params.tags }}
+      <ul class="tag-row">
+        {{ range first 3 . }}
+          <li><a href="{{ (printf "tags/%s/" (. | urlize)) | absURL }}">#{{ . }}</a></li>
+        {{ end }}
+      </ul>
+    {{ end }}
+    <a class="text-link post-link" href="{{ .RelPermalink }}">阅读全文</a>
+  </div>
 </article>

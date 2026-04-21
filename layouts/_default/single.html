@@ -30,7 +30,7 @@
     {{ with .Params.tags }}
       <ul class="tag-row">
         {{ range . }}
-          <li><a href="{{ (printf "/tags/%s/" (. | urlize)) | relURL }}">#{{ . }}</a></li>
+          <li><a href="{{ (printf "tags/%s/" (. | urlize)) | absURL }}">#{{ . }}</a></li>
         {{ end }}
       </ul>
     {{ end }}
