@@ -42,12 +42,51 @@ jobs:
           tar -C "${HOME}/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
           echo "${HOME}/hugo" >> "${GITHUB_PATH}"
 
+      - name: Resolve domain mode
+        id: domain
+        run: |
+          DOMAIN_MODE="$(
+            sed -e 's/\r$//' .domain-mode \
+              | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' \
+              | grep -vE '^(#|$)' \
+              | head -n 1
+          )"
+          if [ -z "${DOMAIN_MODE}" ]; then
+            echo "No valid mode found in .domain-mode. Use 'custom' or 'github'." >&2
+            exit 1
+          fi
+          echo "mode=${DOMAIN_MODE}" >> "${GITHUB_OUTPUT}"
+
+          case "${DOMAIN_MODE}" in
+            custom)
+              echo "base_url=https://blog.mingecc.xyz/" >> "${GITHUB_OUTPUT}"
+              echo "custom_domain=blog.mingecc.xyz" >> "${GITHUB_OUTPUT}"
+              ;;
+            github)
+              echo "base_url=https://mingecc.github.io/My_blog/" >> "${GITHUB_OUTPUT}"
+              echo "custom_domain=" >> "${GITHUB_OUTPUT}"
+              ;;
+            *)
+              echo "Invalid .domain-mode value: '${DOMAIN_MODE}'. Use 'custom' or 'github'." >&2
+              exit 1
+              ;;
+          esac
+
       - name: Build
         run: |
           hugo \
             --gc \
             --minify \
+            --baseURL "${{ steps.domain.outputs.base_url }}" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
+
+      - name: Configure CNAME artifact
+        run: |
+          if [ -n "${{ steps.domain.outputs.custom_domain }}" ]; then
+            echo "${{ steps.domain.outputs.custom_domain }}" > public/CNAME
+          else
+            rm -f public/CNAME
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
