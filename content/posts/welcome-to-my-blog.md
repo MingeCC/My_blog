@@ -4,7 +4,7 @@ date = 2026-04-21T09:35:00+08:00
 draft = false
 description = "用 Hugo 初始化博客后的第一篇文章。"
 tags = ["hugo", "blog"]
-categories = ["建站"]
+categories = ["Build"]
 toc = true
 +++
 

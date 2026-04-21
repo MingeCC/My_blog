@@ -4,7 +4,7 @@ date = 2026-04-20T20:10:00+08:00
 draft = false
 description = "简单记录 Hugo 博客的写作工作流。"
 tags = ["workflow", "markdown"]
-categories = ["写作"]
+categories = ["Writing"]
 toc = true
 +++
 

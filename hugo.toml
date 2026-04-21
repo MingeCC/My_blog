@@ -1,6 +1,6 @@
 baseURL = "https://mingecc.github.io/My_blog/"
 languageCode = "zh-cn"
-title = "Mingyi Blog"
+title = "Mingyi's Blog"
 enableRobotsTXT = true
 summaryLength = 28
 
@@ -17,6 +17,7 @@ category = "categories"
 
 [params]
 author = "Mingyi"
+heroTitle = "Mingyi's Blog"
 description = "写代码，写博客，也写一些还没来得及遗忘的想法。"
 subtitle = "Notes, code, and a calmer corner of the internet."
 avatar = "images/avatar-orbit.svg"

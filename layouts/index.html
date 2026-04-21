@@ -1,19 +1,19 @@
 {{ define "main" }}
   {{ $posts := where site.RegularPages "Section" "posts" }}
-  {{ $recent := first 5 ($posts.ByDate.Reverse) }}
-  <section class="hero hero-grid">
-    <div class="hero-panel">
+  {{ $recent := first 3 ($posts.ByDate.Reverse) }}
+  <section class="hero-card">
+    <div class="hero-main">
       <p class="eyebrow">Personal Notebook</p>
-      <h1>{{ site.Title }}</h1>
+      <h1>{{ site.Params.heroTitle | default site.Title }}</h1>
       <p class="hero-copy">
         {{ with site.Params.description }}{{ . }}{{ else }}{{ site.Params.subtitle }}{{ end }}
       </p>
       <div class="hero-actions">
-        {{ with site.GetPage "/posts" }}
+        {{ with site.GetPage "section" "posts" }}
           <a class="button" href="{{ .Permalink }}">阅读文章</a>
         {{ end }}
-        {{ with site.GetPage "/about" }}
-          <a class="button button-secondary" href="{{ .Permalink }}">关于我</a>
+        {{ with site.GetPage "page" "about.md" }}
+          <a class="button button-secondary" href="{{ .Permalink }}">了解我</a>
         {{ end }}
       </div>
       <ul class="hero-tags">
@@ -23,60 +23,29 @@
       </ul>
     </div>
 
-    <aside class="profile-card">
-      <div class="avatar-frame">
-        <img src="{{ site.Params.avatar | absURL }}" alt="{{ site.Params.author }}">
+    <aside class="hero-side">
+      <div class="author-card">
+        <div class="avatar-frame hero-avatar">
+          <img src="{{ site.Params.avatar | absURL }}" alt="{{ site.Params.author }}">
+        </div>
+        <div class="hero-meta">
+          <p class="eyebrow">Author</p>
+          <h2>{{ site.Params.author }}</h2>
+          <p class="profile-copy">{{ site.Params.subtitle }}</p>
+        </div>
+        <p class="author-stats">
+          <strong>{{ len $posts }}</strong> posts · <strong>{{ len site.Taxonomies.tags }}</strong> tags · <strong>Code + Notes</strong>
+        </p>
       </div>
-      <p class="eyebrow">Author</p>
-      <h2>{{ site.Params.author }}</h2>
-      <p class="profile-copy">{{ site.Params.subtitle }}</p>
-      <dl class="profile-stats">
-        <div>
-          <dt>Posts</dt>
-          <dd>{{ len $posts }}</dd>
-        </div>
-        <div>
-          <dt>Tags</dt>
-          <dd>{{ len site.Taxonomies.tags }}</dd>
-        </div>
-        <div>
-          <dt>Focus</dt>
-          <dd>Code + Notes</dd>
-        </div>
-      </dl>
     </aside>
   </section>
-
-  <section class="feature-strip">
-    <article class="feature-card">
-      <p class="eyebrow">Build</p>
-      <h3>轻量静态站</h3>
-      <p>用 Hugo 写内容，用 GitHub Pages 发布，更新路径足够简单。</p>
-    </article>
-    <article class="feature-card">
-      <p class="eyebrow">Write</p>
-      <h3>Markdown First</h3>
-      <p>文章直接写在仓库里，适合记录技术、学习笔记和长期想法。</p>
-    </article>
-    <article class="feature-card">
-      <p class="eyebrow">Archive</p>
-      <h3>按主题整理</h3>
-      <p>标签、分类和归档页都已经接好，后面扩展内容不会乱。</p>
-    </article>
-  </section>
-
-  {{ with .Content }}
-    <section class="intro prose">
-      {{ . }}
-    </section>
-  {{ end }}
 
   <section class="section-head">
     <div>
       <p class="eyebrow">Latest Posts</p>
       <h2>最近文章</h2>
     </div>
-    {{ with site.GetPage "/posts" }}
+    {{ with site.GetPage "section" "posts" }}
       <a class="text-link" href="{{ .Permalink }}">查看全部</a>
     {{ end }}
   </section>
