@@ -455,7 +455,7 @@ main.page-shell {
 }
 
 .post-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
 
 .stack-list {
@@ -682,6 +682,10 @@ main.page-shell {
   .hero-card,
   .article-nav {
     grid-template-columns: 1fr;
+  }
+
+  .post-grid {
+    grid-template-columns: 1fr !important;
   }
 
   .hero-side {
