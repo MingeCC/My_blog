@@ -454,6 +454,11 @@ main.page-shell {
   margin-top: 2rem;
 }
 
+.section-link-strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
 .post-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
