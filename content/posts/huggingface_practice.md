@@ -1,6 +1,6 @@
 +++
 date = '2026-04-22T10:00:00+08:00'
-draft = true
+draft = false
 title = 'Hugging Face 实战'
 description = '从入门到精通的 Hugging Face 使用指南'
 tags = ["Hugging Face", "Transformers", "NLP"]
