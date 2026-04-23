@@ -7,7 +7,7 @@
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
     <link rel="canonical" href="{{ .Permalink }}">
     <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ "index.xml" | absURL }}">
-    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}?v=20260422-2">
+    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}?v=20260423-1">
   </head>
   <body>
     {{ partial "header.html" . }}
@@ -15,5 +15,8 @@
       {{ block "main" . }}{{ end }}
     </main>
     {{ partial "footer.html" . }}
+    {{ if site.Params.enablePageView }}
+      <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    {{ end }}
   </body>
 </html>
