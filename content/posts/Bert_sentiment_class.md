@@ -113,7 +113,7 @@ pip install transformers torch datasets
 
 | 库 | 版本建议 | 作用 |
 |:----|:----------|:------|
-| `transformers` | ≥4.0 | HuggingFace 模型库，提供 BERT 及各类预训练模型。**HuggingFace** 是一个开源社区和平台，提供大量预训练模型、数据集和工具库，是目前 NLP 领域最主流的资源库 |
+| `transformers` | ≥4.0 | HuggingFace 模型库，提供 BERT 及各类预训练模型。|
 | `torch` | ≥1.8 | PyTorch 深度学习框架 |
 | `datasets` | ≥2.0 | HuggingFace 数据集库 |
 
@@ -1163,7 +1163,7 @@ if __name__ == "__main__":
 ### 7.1 项目要点回顾
 
 | 步骤 | 文件 | 核心内容 |
-|------|------|----------|
+|:------|:------|:----------|
 | 模型加载 | ex1_1 | 从 HuggingFace 下载并加载 `bert-base-chinese` |
 | 基础推理 | ex1_2~1_4 | Pipeline 快速推理、填空任务、下一句预测 |
 | 数据准备 | ex2_1~2_2 | 下载 ChnSentiCorp 数据集、自定义 Dataset 类 |

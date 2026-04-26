@@ -67,6 +67,26 @@ a {
   color: var(--accent);
 }
 
+/* 表格样式 */
+
+ .prose table {
+  width: auto;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.prose th {
+  font-weight: 700;
+  background: rgba(22, 32, 51, 0.05);
+} 
+
 img {
   display: block;
   max-width: 100%;
